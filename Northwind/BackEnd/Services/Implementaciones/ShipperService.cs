@@ -22,6 +22,15 @@ namespace BackEnd.Services.Implementaciones
                 CompanyName = shipper.CompanyName
             };
         }
+
+        ShipperDTO Convertir(Shipper shipper)
+        {
+            return new ShipperDTO
+            {
+                ShipperId = shipper.ShipperId,
+                CompanyName = shipper.CompanyName
+            };
+        }
         public void AddShipper(ShipperDTO shipper)
         {
             var shipperEntity = Convertir (shipper);
@@ -39,7 +48,15 @@ namespace BackEnd.Services.Implementaciones
 
         public List<ShipperDTO> GetShippers()
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.ShipperDAL.GetAll();
+
+            List<ShipperDTO> shippers = new List<ShipperDTO>();
+            foreach (var item in result) 
+            {
+                shippers.Add(Convertir (item));
+
+            }
+            return shippers;
         }
 
         public void UpdateShipper(ShipperDTO shipper)
@@ -52,7 +69,8 @@ namespace BackEnd.Services.Implementaciones
 
         public ShipperDTO GetShipperById(int id)
         {
-            throw new NotImplementedException();
+            var result = _unidadDeTrabajo.ShipperDAL.Get(id);
+            return Convertir(result);
         }
     }
 }
