@@ -1,4 +1,5 @@
-﻿using BackEnd.Services.Interfaces;
+﻿using BackEnd.DTO;
+using BackEnd.Services.Interfaces;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +34,7 @@ namespace BackEnd.Controllers
 
         // POST api/<ShipperController>
         [HttpPost]
-        public void Post([FromBody] Shipper shipper)
+        public void Post([FromBody] ShipperDTO shipper)
         {
             _shipperService.AddShipper(shipper);
         }
