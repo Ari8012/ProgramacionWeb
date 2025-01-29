@@ -8,41 +8,45 @@ using Entities.Entities;
 
 namespace DAL.Implementaciones
 {
-    public class ShipperDAL : IShipperDAL
+    public class DALGenericoImple<TEntity> : IDALGenerico<TEntity> where TEntity : class
     {
-        private NorthWndContext _context;
+        private NorthWndContext _northWndContext;
 
-        public ShipperDAL(NorthWndContext context)
+        public DALGenericoImple(NorthWndContext northWndContext)
         {
-            _context = context;
+            _northWndContext = northWndContext;
         }
-
-        public bool AddShipper(Shipper shipper)
+        public bool Add(TEntity entity)
         {
             try
             {
-                _context.Add(shipper);
-                _context.SaveChanges();
+                _northWndContext.Add(entity);
                 return true;
             }
             catch (Exception)
-            {
-
+            { 
                 return false;
+
             }
+                
         }
 
-        public bool DeleteShipper(int id)
+        public TEntity Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Shipper> GetShippers()
+        public IEnumerable<TEntity> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateShipper(Shipper shipper)
+        public bool Remove(TEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Update(TEntity entity)
         {
             throw new NotImplementedException();
         }

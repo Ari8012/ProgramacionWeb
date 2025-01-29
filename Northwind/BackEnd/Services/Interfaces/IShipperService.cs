@@ -1,4 +1,5 @@
-﻿using Entities.Entities;
+﻿using BackEnd.Controllers;
+using Entities.Entities;
 
 namespace BackEnd.Services.Interfaces
 {
@@ -8,6 +9,5 @@ namespace BackEnd.Services.Interfaces
         void UpdateShipper(Shipper shipper);
         void DeleteShipper(Shipper shipper);
         List<Shipper> GetShippers();
-
     }
 }
