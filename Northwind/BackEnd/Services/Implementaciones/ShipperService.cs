@@ -6,14 +6,15 @@ namespace BackEnd.Services.Implementaciones
 {
     public class ShipperService : IShipperService
     {
-        private IShipperDAL _shipperDAL;
-        public ShipperService(IShipperDAL shipperDAL)
+        IUnidadDeTrabajo _unidadDeTrabajo;
+        public ShipperService(IUnidadDeTrabajo unidadDeTrabajo)
         {
-            _shipperDAL = shipperDAL;
+            _unidadDeTrabajo = unidadDeTrabajo;
         }
         public void AddShipper(Shipper shipper)
         {
-            _shipperDAL.AddShipper(shipper);
+            _unidadDeTrabajo.ShipperDAL.Add(shipper);
+            _unidadDeTrabajo.Complete();
         }
 
         public void DeleteShipper(Shipper shipper)
@@ -28,7 +29,8 @@ namespace BackEnd.Services.Implementaciones
 
         public void UpdateShipper(Shipper shipper)
         {
-            throw new NotImplementedException();
+            _unidadDeTrabajo.ShipperDAL.Update(shipper);
+            _unidadDeTrabajo.Complete();
         }
     }
 }

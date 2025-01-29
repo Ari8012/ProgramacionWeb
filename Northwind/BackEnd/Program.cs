@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 #region DI
 builder.Services.AddDbContext<NorthWndContext>();
+builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IShipperService, ShipperService>();
 builder.Services.AddScoped<IShipperDAL, ShipperDAL>();
 #endregion

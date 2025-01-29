@@ -39,9 +39,10 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<ShipperController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody] Shipper shipper)
         {
+            _shipperService.UpdateShipper(shipper);
         }
 
         // DELETE api/<ShipperController>/5
