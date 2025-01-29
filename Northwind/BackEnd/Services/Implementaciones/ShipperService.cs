@@ -13,12 +13,18 @@ namespace BackEnd.Services.Implementaciones
         {
             _unidadDeTrabajo = unidadDeTrabajo;
         }
-        public void AddShipper(ShipperDTO shipper)
+
+        Shipper Convertir (ShipperDTO shipper)
         {
-            var shipperEntity = new Shipper()
+            return new Shipper
             {
+                ShipperId = shipper.ShipperId,
                 CompanyName = shipper.CompanyName
             };
+        }
+        public void AddShipper(ShipperDTO shipper)
+        {
+            var shipperEntity = Convertir (shipper);
 
             _unidadDeTrabajo.ShipperDAL.Add(shipperEntity);
             _unidadDeTrabajo.Complete();
@@ -26,18 +32,27 @@ namespace BackEnd.Services.Implementaciones
 
         public void DeleteShipper(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Shipper> GetShippers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateShipper(Shipper shipper)
-        {
-            _unidadDeTrabajo.ShipperDAL.Update(shipper);
+            var shipper = new Shipper { ShipperId = id};
+            _unidadDeTrabajo.ShipperDAL.Remove(shipper);
             _unidadDeTrabajo.Complete();
+        }
+
+        public List<ShipperDTO> GetShippers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateShipper(ShipperDTO shipper)
+        {
+            var shipperEntity = Convertir(shipper);
+
+            _unidadDeTrabajo.ShipperDAL.Update(shipperEntity);
+            _unidadDeTrabajo.Complete();
+        }
+
+        public ShipperDTO GetShipperById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
