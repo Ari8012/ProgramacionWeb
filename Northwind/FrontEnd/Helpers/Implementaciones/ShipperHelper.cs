@@ -25,7 +25,12 @@ namespace FrontEnd.Helpers.Implementaciones
         }
         public ShipperViewModel Add(ShipperViewModel shipper)
         {
-            throw new NotImplementedException();
+            HttpResponseMessage response = _ServiceRepository.PostResponse("api/Shipper", shipper);
+            if (response.IsSuccessStatusCode) 
+            { 
+                var content = response.Content.ReadAsStringAsync().Result;
+            }
+            return shipper;
         }
 
         public void Delete(int id)

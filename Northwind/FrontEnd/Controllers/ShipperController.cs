@@ -1,4 +1,5 @@
 ﻿using FrontEnd.Helpers.Interfaces;
+using FrontEnd.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,8 @@ namespace FrontEnd.Controllers
         // GET: ShipperController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var result = _shipperHelper.GetShipper(id);
+            return View(result);
         }
 
         // GET: ShipperController/Create
@@ -34,10 +36,11 @@ namespace FrontEnd.Controllers
         // POST: ShipperController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ShipperViewModel shipper)
         {
             try
             {
+                _shipperHelper.Add(shipper);
                 return RedirectToAction(nameof(Index));
             }
             catch
