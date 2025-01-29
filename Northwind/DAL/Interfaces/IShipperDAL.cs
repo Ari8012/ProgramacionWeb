@@ -7,11 +7,8 @@ using Entities.Entities;
 
 namespace DAL.Interfaces
 {
-    public interface IShipperDAL
+    public interface IShipperDAL : IDALGenerico<Shipper>
     {
-        bool AddShipper(Shipper shipper);
-        bool UpdateShipper(Shipper shipper);
-        bool DeleteShipper(int id);
-        List<Shipper> GetShippers();
+
     }
 }
