@@ -13,15 +13,19 @@ namespace BackEnd.Controllers
     {
         IShipperService _shipperService;
 
-        public ShipperController(IShipperService shipperService)
+        ILogger<ShipperController> _logger;
+
+        public ShipperController(IShipperService shipperService, ILogger<ShipperController> logger)
         {
             _shipperService = shipperService;
+            _logger = logger;
         }
 
         // GET: api/<ShipperController>
         [HttpGet]
         public IEnumerable<ShipperDTO> Get()
         {
+            _logger.LogDebug("Obtener todos los transportistas");
             return _shipperService.GetShippers();
         }
 
@@ -43,7 +47,16 @@ namespace BackEnd.Controllers
         [HttpPut]
         public void Put([FromBody] ShipperDTO shipper)
         {
-            _shipperService.UpdateShipper(shipper);
+            try
+            {
+                _shipperService.UpdateShipper(shipper);
+            }
+            catch (Exception e) 
+            { 
+                _logger.LogError(e.Message);
+
+            }
+            
         }
 
         // DELETE api/<ShipperController>/5

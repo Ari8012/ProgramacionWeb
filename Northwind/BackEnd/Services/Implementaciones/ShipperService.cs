@@ -48,7 +48,7 @@ namespace BackEnd.Services.Implementaciones
 
         public List<ShipperDTO> GetShippers()
         {
-            var result = _unidadDeTrabajo.ShipperDAL.GetAll();
+            var result = _unidadDeTrabajo.ShipperDAL.GetAllShippers();
 
             List<ShipperDTO> shippers = new List<ShipperDTO>();
             foreach (var item in result) 

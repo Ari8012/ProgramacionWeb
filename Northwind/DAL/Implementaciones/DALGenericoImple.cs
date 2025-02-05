@@ -33,17 +33,26 @@ namespace DAL.Implementaciones
 
         public TEntity Get(int id)
         {
-            throw new NotImplementedException();
+            return _northWndContext.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return _northWndContext.Set<TEntity>().ToList(); 
         }
 
         public bool Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _northWndContext.Set<TEntity>().Attach(entity);
+                _northWndContext.Set<TEntity>().Remove(entity);
+                return true;
+            }
+            catch (Exception) 
+            {
+                return false;
+            }
         }
 
         public bool Update(TEntity entity)
