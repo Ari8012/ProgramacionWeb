@@ -30,6 +30,9 @@ builder.Services.AddScoped<IShipperDAL, ShipperDAL>();
 builder.Services.AddScoped<ICustomerDAL, CustomerDAL>();
 builder.Services.AddScoped<IEmployeesDAL, EmployeesDAL>();
 builder.Services.AddScoped<IOrderDAL, OrdersDAL>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IEmployeesService, EmployeesService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 #endregion
 
 var app = builder.Build();

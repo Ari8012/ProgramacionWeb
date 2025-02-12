@@ -6,12 +6,13 @@ namespace BackEnd.DTO
     {
         public int OrderId { get; set; }
         [Required]
-        public int? CustomerId { get; set; }
+        public string CustomerId { get; set; }
         [Required]
         public int? EmployeeId { get; set; }
         [Required]
         public int? ShipperId { get; set; }
-        public int OrderDate { get; set; }
+
+        public DateTime OrderDare { get; set; }
 
     }
 }

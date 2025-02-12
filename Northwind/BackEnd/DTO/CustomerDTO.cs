@@ -2,7 +2,7 @@
 {
     public class CustomerDTO
     {
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
 
         public string CompanyName { get; set; } = null!;
     }
