@@ -1,0 +1,48 @@
+﻿@model FrontEnd.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>OrderViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.CustomerId, new SelectList(Model.Customers, "CustomerId", "CompanyName"), "--Select Supplier--")
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.EmployeeId, new SelectList(Model.Employees, "EmployeeId", "LastName", "FirstName"), "--Select Supplier--")
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShipperId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.ShipperId, new SelectList(Model.Shippers, "ShipperId", "CompanyName"), "--Select Supplier--")
+                <span asp-validation-for="ShipperId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderDate" class="control-label"></label>
+                <input asp-for="OrderDate" class="form-control" />
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
