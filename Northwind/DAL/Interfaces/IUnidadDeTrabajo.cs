@@ -11,6 +11,7 @@ namespace DAL.Interfaces
         IShipperDAL ShipperDAL { get; }
         ICustomerDAL CustomerDAL { get; }
         IEmployeesDAL EmployeesDAL { get; }
+        IOrderDAL OrderDAL { get; }
 
         bool Complete();
     }
