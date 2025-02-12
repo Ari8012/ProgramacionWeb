@@ -7,7 +7,7 @@ using Entities.Entities;
 
 namespace DAL.Interfaces
 {
-    public interface ICustomerDAL: IDALGenerico<Customer>
+    public interface IEmployeesDAL: IDALGenerico<Employee>
     {
     }
 }

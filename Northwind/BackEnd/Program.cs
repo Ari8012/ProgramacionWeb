@@ -27,6 +27,8 @@ builder.Services.AddDbContext<NorthWndContext>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IShipperService, ShipperService>();
 builder.Services.AddScoped<IShipperDAL, ShipperDAL>();
+builder.Services.AddScoped<ICustomerDAL, CustomerDAL>();
+builder.Services.AddScoped<IEmployeesDAL, EmployeesDAL>();
 #endregion
 
 var app = builder.Build();
