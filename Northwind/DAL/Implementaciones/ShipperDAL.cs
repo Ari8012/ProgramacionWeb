@@ -24,10 +24,9 @@ namespace DAL.Implementaciones
 
        public List<Shipper> GetAllShippers()
         {
-            string query = "sp_GetAllShippers";
-            var result = _context.Shippers.FromSqlRaw(query);
-
-            return result.ToList();
+            var result = _context.Shippers.ToList();
+            return result;
+           
         }
 
         public bool Add(Shipper entity)
